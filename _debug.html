@@ -1,0 +1,6 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"><style>
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--w,150px),1fr));gap:8px;padding:8px}.cell{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:4px;text-align:center;font-size:11px}.cell .anim{aspect-ratio:1/1;max-height:none;padding:0}
+</style></head><body><div class="grid" id="g"></div><script src="rig.js"></script><script src="exercises.js"></script><script>
+const g=document.getElementById('g');const q=new URLSearchParams(location.search);const only=q.get("only");if(q.get("w"))document.getElementById("g").style.setProperty("--w",q.get("w")+"px");
+for(const e of EXERCISES){ if(only && !only.split(',').includes(e.id)) continue; const d=document.createElement('div');d.className='cell';d.innerHTML='<div class="anim"></div>'+e.name;g.appendChild(d);RIG.animate(d.querySelector('.anim'),e.anim);}
+</script></body></html>
